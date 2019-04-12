@@ -1,0 +1,19 @@
+{
+	"compilerOptions": {
+		"target": "es5",
+		"lib": [
+			"dom",
+			"dom.iterable",
+			"esnext"
+		],
+		"strict": true,
+		"forceConsistentCasingInFileNames": true,
+		"declaration": true,
+		"module": "commonjs",
+		"outDir": "dist",
+		"moduleResolution": "node"
+	},
+	"include": [
+		"src"
+	]
+}
