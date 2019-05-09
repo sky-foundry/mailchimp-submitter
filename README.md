@@ -5,7 +5,7 @@
 Clone the repository
 
 ```bash
-git clone git@github.com:sky-foundry/typescript-skeleton.git
+git clone git@github.com:sky-foundry/mailchimp-submitter.git
 ```
 
 Install dependencies

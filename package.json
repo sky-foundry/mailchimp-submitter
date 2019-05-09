@@ -1,22 +1,21 @@
 {
-	"name": "my-package",
+	"name": "mailchimp-submitter",
 	"version": "0.1.0",
-	"description": "Lorem ipsumnium.",
+	"description": "Easily itegrate your forms with Mailchimp",
 	"main": "dist/index.js",
-	"repository": "github.com/sky-foundry/typescript-skelton",
+	"repository": "github.com/sky-foundry/mailchimp-submitter",
 	"author": "Sky Foundry <info@skyfoundry.agency>",
-	"private": true,
+	"private": false,
 	"scripts": {
-	  "build": "tsc"
+		"build": "tsc"
 	},
 	"devDependencies": {
-	  "prettier": "^1.16.4",
-	  "tslint": "^5.15.0",
-	  "tslint-config-prettier": "^1.18.0",
-	  "typescript": "^3.4.3"
+		"prettier": "^1.16.4",
+		"tslint": "^5.15.0",
+		"tslint-config-prettier": "^1.18.0",
+		"typescript": "^3.4.3"
 	},
 	"files": [
-	  "dist"
+		"dist"
 	]
-  }
-  
+}
