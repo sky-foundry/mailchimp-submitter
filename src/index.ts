@@ -1,4 +1,5 @@
 import getFieldValueByName from './utils/getFieldByName'
+import getFormFields from './utils/getFormFields'
 import objToUrlParams from './utils/objToUrlParams'
 
 export default function() {
@@ -8,11 +9,14 @@ export default function() {
     mcForm.addEventListener('submit', ev => {
       ev.preventDefault()
 
-      if (ev.target == null) {
+      const formEl = ev.target as HTMLFormElement
+      if (formEl == null) {
         return false
       }
 
-      const fields: HTMLInputElement[] = Array.from(ev.target as any)
+      const fields: HTMLInputElement[] = getFormFields(
+        formEl
+      ) as HTMLInputElement[]
 
       const mcProject = getFieldValueByName(fields, 'project')
       const mcDatacenter = getFieldValueByName(fields, 'datacenter')
@@ -23,12 +27,12 @@ export default function() {
       const win = window as { [key: string]: any }
 
       win[callbackFnId] = function(result: any) {
-        if (ev.target == null) {
+        if (formEl == null) {
           return
         }
 
         const customEvent = new CustomEvent('mcCallback', { detail: result })
-        ev.target.dispatchEvent(customEvent)
+        formEl.dispatchEvent(customEvent)
         delete win[callbackFnId]
       }
 
