@@ -1,6 +1,6 @@
 {
   "name": "mailchimp-submitter",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "Easily itegrate your forms with Mailchimp",
   "main": "dist/index.js",
   "repository": "github.com/sky-foundry/mailchimp-submitter",
