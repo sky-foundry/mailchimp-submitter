@@ -4,21 +4,11 @@
 
 ## Installing
 
-1. Install package as dependency
-
-   ```bash
-   yarn add mailchimp-submitter
-   # or
-   npm install mailchimp-submitter
-   ```
-
-2. Import and initialize Mailchimp Submitter
-
-   ```js
-   import MailchimSubmitter from 'mailchimp-submitter'
-
-   MailchimSubmitter()
-   ```
+```bash
+yarn add mailchimp-submitter
+# or
+npm install mailchimp-submitter
+```
 
 ## Basic Usage
 
@@ -45,13 +35,50 @@
 2. Import functions in your JavaScript and initialize Mailchimp Submitter
 
    ```js
-   import MailchimSubmitter from 'mailchimp-submitter'
+   import MailchimpSubmitter from 'mailchimp-submitter'
 
    // Initialize mailchimp submitter on your forms with data-mc="true"
-   MailchimSubmitter()
-
-   // Optionally add an event listener to handle the response
-   document.getElementById('my-form').addEventListener('mcCallback', resp => {
-     console.log(resp)
-   })
+   MailchimpSubmitter()
    ```
+
+## Advanced Usage
+
+### Using callbacks as arguments
+
+```js
+MailchimpSubmitter({
+  // Optional callback before submitting form to Mailchimp.
+  // Return false in this callback to cancel the form request (IE. validation).
+  beforeSubmit: _formEl => {
+    const isValid = validateForm()
+    return isValid
+  },
+
+  // Optional callback after Mailchimp response
+  callback: (_formEl, resp) => {
+    if (resp.result === 'success') {
+      alert('Successfully subscribed')
+    } else {
+      alert('Error: ' + resp.msg)
+    }
+  },
+})
+```
+
+### Using callbacks as event listeners
+
+```js
+const myForm = document.getElementById('my-form')
+
+myForm.addEventListener('mcBeforeSubmit', () => {
+  console.log('Submitting form...')
+})
+
+myForm.addEventListener('mcCallback', ({ detail: resp }) => {
+  if (resp.result === 'success') {
+    alert('Successfully subscribed')
+  } else {
+    alert('Error: ' + resp.msg)
+  }
+})
+```
